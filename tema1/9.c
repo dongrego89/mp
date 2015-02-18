@@ -27,7 +27,7 @@ int esPrefijo(char * cadena, char * prefijo){
 
 	int acierto=0;
 	
-	if((strstr(cadena,prefijo) == cadena)){//Si se encuentra la subcadena en cadena, y además la coincidencia comienza en la posición 0 del array
+	if((strstr(cadena,prefijo) == cadena)){
 		acierto=1;
 	}	
 	
