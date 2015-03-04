@@ -1,72 +1,82 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void calculaEstadisticas(float * notas, float * media, float * maxima, float * minima);
-float calculaMaxima(float * notas);
-float calculaMinima(float * notas);
-float calculaMedia(float * notas);
+#include "7.h"
 
-int main(){
-
-float media, maxima, minima, notas[50];
-int i;
-
-srand(time(NULL));
-
-for(i=0;i<50;i++){
-	notas[i]=(float)(rand()%1000) / 100;
-	printf("%9.9s%2d: %2.2f","\n\tNOTA ",i+1,notas[i]);
+void imprimeNotas(float * examenes){
+	int i,j;
+	for(i=0;i<50;i++,j++){
+		if(j%5==0){
+			printf("\n");
+		}
+		printf(" %.2f ",*(examenes+i));
+	}
+	printf("\n");
 }
 
-calculaEstadisticas(notas,&media,&maxima,&minima);
+void calculaEstadisticas(float * examenes, float * media_a, float * maxima_a, float * minima_a, float * media_b, float * maxima_b, float * minima_b){
 
-printf("\n\n\tMedia: %2.2f",media);
-printf("\n\tMaxima: %2.2f",maxima);
-printf("\n\tMinima: %2.2f\n",minima);
-
-return 0;
-}
-
-
-float calculaMaxima(float * notas){
-		int i;
-		float auxiliar=0;
-
-		for(i=0;i<50;i++){
-			if(notas[i]>auxiliar){
-				auxiliar=notas[i];
-			}			
-		}	
-
-		return auxiliar;
-	
-}
-float calculaMinima(float * notas){
-		int i;
-		float auxiliar=10;
-
-		for(i=0;i<50;i++){
-			if(notas[i]<auxiliar){
-				auxiliar=notas[i];
-			}			
-		}	
-		return auxiliar;
+	media(examenes,media_a,media_b);
+	maxima(examenes,maxima_a,maxima_b);
+	minima(examenes,minima_a,minima_b);
 
 }
-float calculaMedia(float * notas){
-		int i;
-		float auxiliar=0;
 
-		for(i=0;i<50;i++){
-			auxiliar+=notas[i];
-		}	
+void media(float * examenes, float * media_a, float * media_b){
 
-		return auxiliar/50;
+	int i;
+	for(i=0;i<50;i++){
+		if(i%2==0){ // Examen A 
+			*media_a+=examenes[i];
+		}
+		else{ // Examen B
+			*media_b+=examenes[i];
+		}
+	}
+
+	*media_a=*media_a/25;
+	*media_b=*media_b/25;
+
+}
+void maxima(float * examenes, float * maxima_a, float * maxima_b){
+	int i;
+	for(i=0;i<50;i++){
+		if(i%2==0){ // Examen A
+			if(*maxima_a<*(examenes+i)){
+				*maxima_a=*(examenes+i);
+			}
+		}
+		else{ // Examen B
+			if(*maxima_b<*(examenes+i)){
+				*maxima_b=*(examenes+i);
+			}
+		}
+	}
+}
+void minima(float * examenes, float * minima_a, float * minima_b){
+	int i;
+	for(i=0;i<50;i++){
+		if(i%2==0){ // Examen A
+			if(*minima_a>*(examenes+i)){
+				*minima_a=*(examenes+i);
+			}
+		}
+		else{ // Examen B
+			if(*minima_b>*(examenes+i)){
+				*minima_b=*(examenes+i);
+			}
+		}
+	}
+
 }
 
-void calculaEstadisticas(float * notas, float * media, float * maxima, float * minima){
-	*media=calculaMedia(notas);
-	*minima=calculaMinima(notas);
-	*maxima=calculaMaxima(notas);
+void rellenaNotas(float * examenes){
+
+	int i;
+
+	for(i=0;i<50;i++){ // Recorremos el vector 
+		//*(examenes+i)=drand48() * (10.00 - 0.00);
+		*(examenes+i)=rand()%10;
+	}
+
 }
