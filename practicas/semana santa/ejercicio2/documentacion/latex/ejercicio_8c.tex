@@ -1,0 +1,123 @@
+\hypertarget{ejercicio_8c}{\section{Referencia del Archivo ejercicio.\-c}
+\label{ejercicio_8c}\index{ejercicio.\-c@{ejercicio.\-c}}
+}
+
+
+Documento con las funciones del ejercicio.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}ejercicio.\-h\char`\"{}}\\*
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{ejercicio_8c_a947bf1461f1fe42e7db544ea136b89eb}{int $\ast$$\ast$ {\bfseries crea\-Matriz} (int fil, int col)}\label{ejercicio_8c_a947bf1461f1fe42e7db544ea136b89eb}
+
+\item 
+\hypertarget{ejercicio_8c_ae505ba12a7d364430893235cf0a8b5c9}{int $\ast$ {\bfseries crea\-Vector} (int e)}\label{ejercicio_8c_ae505ba12a7d364430893235cf0a8b5c9}
+
+\item 
+int $\ast$ \hyperlink{ejercicio_8c_af2da671b1f046753a92b2fb213f0f5a5}{extrae\-Mayores} (int $\ast$$\ast$matriz, int f, int c, int corte, int $\ast$e)
+\begin{DoxyCompactList}\small\item\em Extrae los elementos mayores del elemento de corte de la matriz y los devuelve en un vector. \end{DoxyCompactList}\item 
+void \hyperlink{ejercicio_8c_abbd7f909768782a4352f60353e8af8a2}{calcula\-Max\-Min} (int $\ast$$\ast$matriz, int f, int c, int $\ast$max, int $\ast$min)
+\begin{DoxyCompactList}\small\item\em Calcular el mayor y menor elemento de una matriz devolviéndolos por referencia. \end{DoxyCompactList}\item 
+\hypertarget{ejercicio_8c_a98fbeec8bf28acb156b96186143a24fd}{void {\bfseries libera\-Matriz} (int $\ast$$\ast$$\ast$matriz, int f)}\label{ejercicio_8c_a98fbeec8bf28acb156b96186143a24fd}
+
+\item 
+\hypertarget{ejercicio_8c_a4f09b9e46b6a06703d357a5cdff1e24f}{void {\bfseries libera\-Vector} (int $\ast$$\ast$vector)}\label{ejercicio_8c_a4f09b9e46b6a06703d357a5cdff1e24f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Documento con las funciones del ejercicio. 
+
+
+
+\begin{DoxyVerb}@author Grego Corpas Prieto
+@date 30-03-2015
+@version 1.0
+\end{DoxyVerb}
+
+
+
+
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{ejercicio_8c_abbd7f909768782a4352f60353e8af8a2}{\index{ejercicio.\-c@{ejercicio.\-c}!calcula\-Max\-Min@{calcula\-Max\-Min}}
+\index{calcula\-Max\-Min@{calcula\-Max\-Min}!ejercicio.c@{ejercicio.\-c}}
+\subsubsection[{calcula\-Max\-Min}]{\setlength{\rightskip}{0pt plus 5cm}calcula\-Max\-Min (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{matriz, }
+\item[{int}]{f, }
+\item[{int}]{c, }
+\item[{int $\ast$}]{max, }
+\item[{int $\ast$}]{min}
+\end{DoxyParamCaption}
+)}}\label{ejercicio_8c_abbd7f909768782a4352f60353e8af8a2}
+
+
+Calcular el mayor y menor elemento de una matriz devolviéndolos por referencia. 
+
+
+
+
+
+\begin{DoxyVerb}@param matriz Puntero a la matriz de donde extraer
+@param f Numero de filas de la matriz
+@param c Numero de columnas de la matriz
+@param max Puntero donde almacenar el elemento de mayor valor
+@param min Puntero donde almacenar el eleemento de menor valor
+@pre La matriz ha de estar rellena
+@return Nada
+
+@author Grego Corpas Prieto
+@date 30-03-2015
+
+Esta función busca los valores máximo y mínimo mediante el recorrido iterativo de la matriz, por filas y columnas
+y mediante el uso de punteros devuelve por referencia los valores máximos y mínimos
+\end{DoxyVerb}
+
+
+
+
+ \hypertarget{ejercicio_8c_af2da671b1f046753a92b2fb213f0f5a5}{\index{ejercicio.\-c@{ejercicio.\-c}!extrae\-Mayores@{extrae\-Mayores}}
+\index{extrae\-Mayores@{extrae\-Mayores}!ejercicio.c@{ejercicio.\-c}}
+\subsubsection[{extrae\-Mayores}]{\setlength{\rightskip}{0pt plus 5cm}extrae\-Mayores (
+\begin{DoxyParamCaption}
+\item[{int $\ast$$\ast$}]{matriz, }
+\item[{int}]{f, }
+\item[{int}]{c, }
+\item[{int}]{corte, }
+\item[{int $\ast$}]{e}
+\end{DoxyParamCaption}
+)}}\label{ejercicio_8c_af2da671b1f046753a92b2fb213f0f5a5}
+
+
+Extrae los elementos mayores del elemento de corte de la matriz y los devuelve en un vector. 
+
+
+
+
+
+\begin{DoxyVerb}@param matriz Puntero a la matriz de donde extraer
+@param f Numero de filas de la matriz
+@param c Numero de columnas de la matriz
+@param corte Elemento de corte a la hora de seleccionar mayores
+@param e Puntero donde almacenar la dimensión del vector resultante
+@pre Matriz debe contener valores
+@return puntero Dirección del vector resultante
+
+@author Grego Corpas Prieto
+@date 30-03-2015
+
+Esta función busca los elementos mayores de un número dentro de una matriz y los coloca en un vector dinámico que 
+se devuelve como retorno
+\end{DoxyVerb}
+
+
+
+
+ 

@@ -1,65 +1,74 @@
-#include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<stdio.h>
 
 #include "ej5.h"
 
 
-char ** leeFrases(int * nFrases){
+char ** leeCadenas(int * n){
 
-	char auxiliar[MAX],letra,** puntero=NULL;
-	int i=0;
-
-	printf("\nIntroduciendo cadenas. Usa el caracter $ para finalizar\n");
-	while(1){
-		i++;
-		puntero=realloc(puntero,sizeof(char *) * i);
-		fflush(stdin);
-		fgets(auxiliar,MAX,stdin);
-		
-		if(auxiliar[0]=='$'){
-			break;
-		}
-
-		puntero[i-1]=(char *)malloc(sizeof(char)*strlen(auxiliar));
-		auxiliar[strlen(auxiliar)-1]='\0';
-		strcpy(puntero[i-1],auxiliar);	
-
-	}
+	char ** puntero=NULL;
+	char auxiliar[160];
+	*n=0; //El numero de cadenas utiles de momento es 0
+	printf("\nPara dejar de introducir cadenas escribe $:\n");
+	do{
+		fgets(auxiliar,160,stdin); //Leemos la cadena
 	
-	*nFrases=i-1;
+		if(auxiliar[0]!='$'){ //Si no es el $
+			*n=(*n)+1; //Incrementamos el numero de elementos utiles en el vector
+			auxiliar[strlen(auxiliar)-1]='\0'; //Supresión del \n por \0
+
+			puntero=(char **)realloc(puntero,sizeof(char *)*(*n)); //Reconfiguramos el espacio según los elementos útiles actuales
+			puntero[(*n)-1]=(char *)realloc(puntero[(*n)-1],sizeof(char)*(strlen(auxiliar)+1));	//Reservamos espacio para la cadena que pedimos al usuario
+			
+			strcpy(puntero[(*n)-1],auxiliar);//Copiamos la cadena en su lugar del vector		
+		}
+		
+	}while(auxiliar[0]!='$'); //Mientras no se introduzca el caracter $
+	
 	return puntero;
 }
 
-void imprimeFrases(char ** vector, int nFrases, char * mensaje){
+void imprimeCadenas(char ** vector,int n,char * mensaje){
 	int i;
-	
+
 	printf("%s",mensaje);
-	for(i=0;i<nFrases;i++){
-		printf("\n\t%s",vector[i]);
+	for(i=0;i<n;i++){
+		printf("\n\t%s (%d)",vector[i],(int)strlen(vector[i]));
 	}
 	printf("\n");
 }
 
+char * concatena(char ** vector, int n){
+	char * puntero=NULL;	
+	int tam=0,i,pos;
 
-char * concatenaCadenas(char * destino, char * origen){
-	int n=strlen(destino) + strlen(origen),i,contador;
+	for(i=0;i<n;i++){
+		if(i%2!=0){
+			tam=1+tam+strlen(vector[i]);
+		//He de reservar 1 caracter más de espacio porque el \0 lo omite al mostrar strlen, y luego necesitaré el hueco para el espacio.
+		}
+	}
 	
-	char * puntero=(char *)malloc(sizeof(char)*n);
+	puntero=(char *)malloc(sizeof(char)*tam);
 
-	for(i=0,contador=0;i<strlen(destino);i++,contador++){
-		puntero[contador]=destino[i];
+	if(puntero==NULL){
+		printf("\nError reservando memoria\n");
+		exit(-1);	
 	}
 
-	puntero[contador]=' '; //quitar el \0
-	contador+=1;
-	puntero[contador]=' '; //meter espacio
-
-	for(i=0;i<strlen(origen);i++,contador++){
-		puntero[contador]=origen[i];
+	pos=0; //En esta variable llevaremos la posición donde continuaremos copiando.	
+	
+	for(i=0;i<n;i++){
+		if(i%2!=0){
+			strcpy(&puntero[pos],vector[i]);
+			pos=pos+(int)strlen(vector[i]);
+			puntero[pos]=' ';//En la siguiente posición a donde termina la cadena va un espacio
+			pos++;//E incrementamos la posición para recibir la próxima cadena.
+		}
 	}
+
+	puntero[pos-1]='\0'; //En el caso de la última frase si hay que dejar el \0 para indicar que acaba la cadena
 	
 	return puntero;
 }
-
-

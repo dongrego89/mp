@@ -1,30 +1,23 @@
 #include<stdio.h>
-#include<stdlib.h>
 
 #include "ej5.h"
 
 int main(){
-	
+
 	system("clear");
 
-	char ** vector, *cadena=NULL;
-	int nFrases=0,i;
+	char ** vector, * concatenacion;
+	int numero=0;
 
-	vector=leeFrases(&nFrases);
+	vector=leeCadenas(&numero);
 
-	imprimeFrases(vector,nFrases,"\nVector de cadenas:");
+	printf("\nHemos leido un total de %d cadenas\n",numero);
 	
-	cadena=(char *)malloc(sizeof(char));
-
-	for(i=0;i<nFrases;i++){
-		if(i%2==0){
-			cadena=concatenaCadenas(cadena,vector[i]);
-		}
+	if(numero!=0){
+		imprimeCadenas(vector,numero,"\nVector Cadenas:\n");
 	}
-
-
-	printf("La cadena resultante es:\n\t%s\n",cadena);
-
-
+	
+	concatenacion=concatena(vector,numero);
+	printf("\nLa cadena concatenada final es: \n\t%s\n",concatenacion);
 return 0;
 }
