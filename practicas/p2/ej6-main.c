@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include<time.h>
 
+#include "ej4.h"
+
 int main(){
 
 	system("clear");

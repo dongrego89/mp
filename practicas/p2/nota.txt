@@ -1,0 +1,1 @@
+Las cabeceras de las funciones de la libreria libMatrices.a están en ej4.h

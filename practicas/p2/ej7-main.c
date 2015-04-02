@@ -2,56 +2,51 @@
 #include<stdlib.h>
 #include<time.h>
 
-int ** multiplicaMatrices(int ** matrizA,int h,int i,int ** matrizB,int j,int k){
-	int ** puntero=NULL;
-	int a,b,c,sumatorio;
-	puntero=reservaMemoria(h,k);
-	printf("petada padre A");
-	for(a=0;a<h;a++){		
-	printf("petada padre b");
-		for(b=0;b<k;b++){
-	printf("petada padre c");
-			sumatorio=0;
-			for(c=0;c<i;c++){
-				sumatorio+=(matrizA[a][c])*(matrizB[c][a]);
-			}
-			puntero[a][b]=sumatorio;
-		}
-	}
-
-	return puntero;
-}
+#include "ej4.h"
 
 int main(){
 
 	system("clear");
+	srand(time(NULL));
 
-	int ** matrizA, ** matrizB, ** matrizC;
-	int h,i,j,k,l,m;
-	int a,b;
+	int ** ma, ** mb, ** mc;
+	int fa,ca,fb,cb,fc,cc;
 
-	printf("Introduce las dimensiones de la matriz A: ");
-	scanf("%d %d",&h,&i);
-	printf("Introduce las dimensiones de la matriz B: ");
-	scanf("%d %d",&j,&k);
+	printf("\nIntroduce las dimensiones F x C de la matriz A: ");
+	scanf("%d %d",&fa,&ca);
 
-	matrizA=reservaMemoria(h,i);
-	matrizB=reservaMemoria(j,k);
+	printf("\nIntroduce las dimensiones F x C de la matriz B: ");
+	scanf("%d %d",&fb,&cb);
 
-	rellenaMatriz(matrizA,h,i);
-	rellenaMatriz(matrizB,j,k);
+	ma=reservaMemoria(fa,ca);
+	mb=reservaMemoria(fb,cb);
 
-	imprimeMatriz(matrizA,h,i,"\nMatriz A");
-	imprimeMatriz(matrizB,j,k,"\nMatriz B");
+	rellenaMatriz(ma,fa,ca);
+	rellenaMatriz(mb,fb,cb);
 
-	if(i!=j){
-		printf("\nImposible multiplicar matrices por diferencia de ordenes");
+	imprimeMatriz(ma,fa,ca,"\nMatriz A:");
+	imprimeMatriz(mb,fb,cb,"\nMatriz B:");
+
+	if(ca!=fb){
+		printf("\nError, no se puede multiplicar estas matrices por diferencia de órdenes\n");
 		exit(-1);
 	}
-	/*
-	matrizC=multiplicaMatrices(matrizA,h,i,matrizB,j,k);
 	
-	imprimeMatriz(matrizC,h,k);*/
+	mc=reservaMemoria(fa,cb);
+	fc=fa;
+	cc=cb;
+	
+	multiplica(ma,fa,ca,mb,fb,cb,mc,fc,cc);
+	
+	imprimeMatriz(mc,fc,cc,"\nMatriz C:");	
+
+	liberaMemoria(&ma,fa);
+	liberaMemoria(&mb,fb);
+	liberaMemoria(&mc,fc);
+
+	if((ma==NULL) && (mb==NULL) && (mc==NULL)){
+		printf("\nMemoria liberada satisfactoriamente\n");
+	}
 
 	return 0;
 }
