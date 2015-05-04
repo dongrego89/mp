@@ -1,22 +1,17 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 #include "ej3.h"
 
-int main(){
+int main(int argc, char ** argv){
 
-	system("clear");
+	if(argc!=3){
+		printf("\nError invocando el programa\n\t%s [CADENA DE TEXTO] [CARACTER] \n",argv[0]);
+		exit(-1);	
+	}
 	
-	char cadena[150],caracter;
-	int cantidad;
-
-	printf("\nIntroduce una cadena de texto: ");
-	gets(cadena);
-
-	printf("\nIndica el caracter que vamos a buscar en la cadena: ");
-	scanf("%c",&caracter);
+	printf("\nEl caracter %c se encuentra en la cadena '%s' un total de %d veces\n",argv[2][0],argv[1],cuentaCaracter(argv[1],argv[2][0]));
 	
-	cantidad=buscaCaracter(caracter,cadena);
 
-	printf("\nExisten %d coincidencias con el caracter %c en la cadena\n\t\"%s\"\n",cantidad,caracter,cadena);
 	return 0;
 }

@@ -2,21 +2,18 @@
 
 #include "ej3.h"
 
-int buscaCaracter(char caracter,char * cadena){
 
-	int resultado=0;		
+int cuentaCaracter(char * cadena, char caracter){
 
-	printf("Se busca %c en %s\n", caracter, cadena);	
+	int cuenta=0;
 
-	if(*cadena=='\0'){
-		resultado = 0;
+	if(cadena[0]!='\0'){
+		if(cadena[0]==caracter){
+			cuenta=1;
+		}
+		return cuenta + cuentaCaracter(cadena+1,caracter);
 	}
-	else{//Si no es el caso base
-		if(*cadena==caracter){
-			resultado=1;
-		}	
-		resultado+=buscaCaracter(caracter,cadena+1);
+	else{
+		return cuenta;
 	}
-
-	return resultado;
 }

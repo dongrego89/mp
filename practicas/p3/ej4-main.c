@@ -1,24 +1,12 @@
 #include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
 
 #include "ej4.h"
 
 int main(){
 
-	system("clear");
-	
-	srand(time(NULL));
+	int vector[9] = {2,5,3,1,7,3,3,4,1};
 
-	int * vector=NULL;
-	int elementos;
-	
-	printf("\nIntroduce el numero de elementos que tendra el vector: ");
-	scanf("%d",&elementos);
-	
-	vector=reservaMemoria(elementos);
-	rellenaVector(vector,elementos);
-	imprimeVector(vector,elementos,"\n Vector: ");
+	printf("\nEl resultado del producto del vector es %d\n",productoRecursivo(vector,9));
 
 	return 0;
 }

@@ -1,0 +1,5 @@
+hola esto es un texto todo en minusculas
+y tiene varias lineas
+esta es la tercera de hecho
+y para finalizar,la última de todas
+esta de aquí.
