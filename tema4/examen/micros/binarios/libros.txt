@@ -1,0 +1,24 @@
+Distributed Systems: Concepts and Design
+Kindberg
+60.95 5
+Genetic Fuzzy Systems
+Oscar Cordon
+49.55 10
+Programacion en C
+Alberto Joyanes
+36.99 3
+The R book
+Crawley
+105.25 9
+Fundamentos de Algoritmia
+Brassard Braley
+53.25 12
+Analisis y diseño orientado a objetos de sistemas
+Bennet Farmer
+15.67 5
+Artificial Intelligence
+Russell Norving
+43.99 35
+Introduccion a la Informatica
+Alberto Prieto 
+25.67 120
