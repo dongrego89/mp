@@ -1,8 +1,0 @@
-Alvaro Osuna Galvez
-91 30.100 150.300 0
-Miguel Luque Oliva
-91 29.900 152.100 0
-Pedro Luis Hernandez Sanchez
-91 30.400 151.200 0
-Alfonso Rus Soto
-92 30.500 150.300 0
