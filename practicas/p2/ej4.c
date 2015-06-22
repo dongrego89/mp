@@ -7,6 +7,7 @@ int ** reservaMemoria(int f,int c){
 	int ** puntero=NULL,i;
 
 	puntero=(int **)malloc(sizeof(int *)* f);
+
 	if(puntero==NULL){
 		printf("\nError reservando memoria\n");
 		exit(-1);
